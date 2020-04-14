@@ -42,12 +42,12 @@
       <version>0.9.5.2</version>
     </dependency>
 
-    <!-- 数据库连接 -->
+    <!-- 数据库连接
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <version>8.0.18</version>
-    </dependency>
+    </dependency> -->
 
   </dependencies>
 
