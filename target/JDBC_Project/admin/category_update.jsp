@@ -32,7 +32,7 @@
         </div>
         <div class="admin-form theme-primary mw1000 center-block" style="padding-bottom: 175px;">
             <div class="panel heading-border">
-                <form id="admin-form" name="addForm" action="${ pageContext.request.contextPath }/CategoryServlet" method="post">
+                <form id="admin-form" name="addForm" action="${ pageContext.request.contextPath }/CategoryServlet.do" method="post">
                     <input type="hidden" name="method" value="update">
                     <input type="hidden" name="cid" value="${ category.cid }">
                     <div class="panel-body bg-light">

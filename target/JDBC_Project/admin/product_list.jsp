@@ -17,8 +17,8 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/assets/admin-tools/admin-forms/css/admin-forms.css">
 <link rel="shortcut icon" href="${pageContext.request.contextPath }/assets/img/favicon.ico">
 <script type="text/javascript">
-	function saveUI(){
-		window.location.href="${pageContext.request.contextPath }/ProductServlet?method=saveUI";
+	function save_page(){
+		window.location.href="${pageContext.request.contextPath }/ProductServlet.do?method=save_page";
 	}
 </script>
 </head>
@@ -48,7 +48,7 @@
                                 <button type="button" class="btn btn-default light">
                                     <i class="fa fa-trash"></i>
                                 </button>
-                                <button type="button" class="btn btn-default light" onclick="saveUI()">
+                                <button type="button" class="btn btn-default light" onclick="save_page()">
                                     <i class="fa fa-plus" ></i>
                                 </button>
                             </div>
@@ -78,7 +78,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        	<c:forEach var="product" items="${ list }">
+                        	<c:forEach var="product" items="${ product }">
                             <tr class="message-unread">
                                 <td>${ product.pname }</td>
                                 <td>${ product.category.cname }</td>
@@ -86,8 +86,8 @@
                                 <td>${ product.author }</td>
 								<td>${ product.description }</td>
                                 <td>
-                                    <a href="${ pageContext.request.contextPath }/ProductServlet?method=edit&pid=${ product.pid }">编辑</a>
-                                    <a href="${ pageContext.request.contextPath }/ProductServlet?method=delete&pid=${ product.pid }">删除</a>
+                                    <a href="${ pageContext.request.contextPath }/ProductServlet.do?method=edit&pid=${ product.pid }">编辑</a>
+                                    <a href="${ pageContext.request.contextPath }/ProductServlet.do?method=delete&pid=${ product.pid }">删除</a>
                                 </td>
                             </tr>
 							</c:forEach>

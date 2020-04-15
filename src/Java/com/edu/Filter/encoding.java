@@ -17,7 +17,6 @@ public class encoding implements Filter {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
         filterChain.doFilter(new MyRequest(request),response);
-
     }
     /*
      * 1.写一个类实现与被增强对象相同的接口

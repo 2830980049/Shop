@@ -14,11 +14,11 @@
                     </a>
                     <ul class="nav sub-nav">
                         <li>
-                            <a href="${ pageContext.request.contextPath }/ProductServlet?method=findAll">
+                            <a href="${ pageContext.request.contextPath }/ProductServlet.do?method=findAll">
                                 <span class="glyphicon glyphicon-calendar"></span> 商品列表 </a>
                         </li>
                         <li>
-                            <a href="${ pageContext.request.contextPath }/ProductServlet?method=saveUI">
+                            <a href="${ pageContext.request.contextPath }/ProductServlet.do?method=save_page">
                                 <span class="glyphicon glyphicon-check"></span> 添加商品 </a>
                         </li>
                     </ul>

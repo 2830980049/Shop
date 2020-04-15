@@ -40,7 +40,7 @@
             	3.表单的enctype属性需要设置为multipart/form-data
             	文件上传使用的是fileUpload组件
              -->
-                <form action="${ pageContext.request.contextPath }/ProductServlet?method=save" method="post" enctype="multipart/form-data">
+                <form action="${ pageContext.request.contextPath }/ProductServlet.do?method=save_data" method="post" enctype="multipart/form-data">
                     <div class="panel-body bg-light">
                         <div class="section-divider mt20 mb40">
                             <span> 基本信息 </span>
@@ -102,7 +102,7 @@
                             <div class="col-md-6">
                                 <label for="sn" class="field select">
                                 	<select name="cid" class="gui-input" placeholder="分类...">
-                                    	<c:forEach var="category" items="${ categoryList }">
+                                    	<c:forEach var="category" items="${ list }">
                                     		<option value="${ category.cid }" >${ category.cname }</option>
                                     	</c:forEach>
                                     </select>

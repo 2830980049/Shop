@@ -13,4 +13,28 @@ public class CategoryServiceimpl implements CategoryService {
         CategoryDao categoryDao = new CategoryDaoImpl();
         return categoryDao.findAll();
     }
+
+    @Override
+    public void save_data(Category category) {
+        CategoryDao categoryDao = new CategoryDaoImpl();
+        categoryDao.save_data(category);
+    }
+
+    @Override
+    public Category edit_data(String cid) {
+        CategoryDao categoryDao = new CategoryDaoImpl();
+        return categoryDao.edit_data(cid);
+    }
+
+    @Override
+    public void update_data(Category category) {
+        CategoryDao categoryDao = new CategoryDaoImpl();
+        categoryDao.update_data(category);
+    }
+
+    @Override
+    public void delete_data(Integer cid) {
+        CategoryDao categoryDao = new CategoryDaoImpl();
+        categoryDao.delete_data(cid);
+    }
 }

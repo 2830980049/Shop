@@ -41,7 +41,7 @@ public class FileUpload {
                 if (fileName != null && !"".equals(fileName)){
                     uuidFileName = getFileName(fileName);
                     InputStream is = fileItem.getInputStream();
-                    String path = req.getSession().getServletContext().getRealPath("/")+"img\\";
+                    String path = req.getSession().getServletContext().getRealPath("/")+"images\\";
                     url = path + uuidFileName;
 
                     OutputStream os = new FileOutputStream(url);
@@ -52,6 +52,7 @@ public class FileUpload {
                     is.close();
                     os.close();
                 }
+                System.out.println(map);
                 map.put("path",url);
                 map.put("filename",uuidFileName);
             }
