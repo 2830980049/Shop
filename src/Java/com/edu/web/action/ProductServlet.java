@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -28,8 +29,13 @@ public class ProductServlet extends HttpServlet {
                 save_page(req,resp);
                 else if("save_data".equals(methodName))
                     save_data(req,resp);
+                    else if("edit".equals(methodName))
+                        edict_data(req,resp);
+                        else if("update".equals(methodName))
+                            update_data(req,resp);
+                            else if("delete".equals(methodName))
+                                delete_data(req,resp);
     }
-
 
 
     /**
@@ -77,6 +83,70 @@ public class ProductServlet extends HttpServlet {
         //处理数据
         productService.save_data(product);
         resp.sendRedirect(req.getContextPath()+"/ProductServlet.do?method=findAll");
+    }
+
+    /**
+     *后台商品编辑
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
+    private void edict_data(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Integer pid = Integer.parseInt(req.getParameter("pid"));
+        ProductService productService = new ProductServiceimpl();
+        Product product = productService.edit_data(pid);
+        System.out.println(product);
+        CategoryService categoryService = new CategoryServiceimpl();
+        List<Category> categories = categoryService.findAll();
+        req.setAttribute("product",product);
+        req.setAttribute("categoryList",categories);
+        req.getRequestDispatcher("/admin/product_update.jsp").forward(req,resp);
+    }
+
+    /**
+     *后台商品更新
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
+    private void update_data(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Map<String,String> map = FileUpload.uploadFile(req);
+        Product product = new Product();
+        product.setPid(Integer.parseInt(map.get("pid")));
+        product.setPname(map.get("pname"));
+        product.setPrice(Double.parseDouble(map.get("price")));
+        product.setPath(map.get("path"));
+        product.setFilename(map.get("filename"));
+        product.setAuthor(map.get("author"));
+        product.setDescription(map.get("description"));
+        product.getCategory().setCid(Integer.parseInt(map.get("cid")));
+        ProductService productService = new ProductServiceimpl();
+        productService.update(product);
+        resp.sendRedirect(req.getContextPath()+"/ProductServlet.do?method=findAll");
+    }
+
+    /**
+     * 后台数据删除
+     * @param req
+     * @param resp
+     */
+    private void delete_data(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        ProductService productService = new ProductServiceimpl();
+        Integer pid = Integer.parseInt(req.getParameter("pid"));
+        //删除图片
+        Product product = productService.edit_data(pid);
+        if(product.getPath() != null && !"".equals(product.getPath())){
+            File file = new File(product.getPath());
+            if (file.exists())
+                file.delete();
+        }
+
+        productService.delete_data(pid);
+        System.out.println(product+" "+pid);
+        resp.sendRedirect(req.getContextPath()+"/ProductServlet.do?method=findAll");
+
     }
 
     @Override

@@ -41,7 +41,9 @@ public class FileUpload {
                 if (fileName != null && !"".equals(fileName)){
                     uuidFileName = getFileName(fileName);
                     InputStream is = fileItem.getInputStream();
-                    String path = req.getSession().getServletContext().getRealPath("/")+"images\\";
+                    String path = req.getSession().getServletContext().getRealPath("/");
+                    path = path.replace(path.substring(path.indexOf("target")),"src\\main\\webapp") + "\\Up_images\\";
+                    System.out.println(path);
                     url = path + uuidFileName;
 
                     OutputStream os = new FileOutputStream(url);

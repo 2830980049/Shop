@@ -33,7 +33,7 @@
         </div>
         <div class="admin-form theme-primary mw1000 center-block" style="padding-bottom: 175px;">
             <div class="panel heading-border">
-                <form  action="${ pageContext.request.contextPath }/ProductServlet?method=update" method="post" enctype="multipart/form-data">
+                <form  action="${ pageContext.request.contextPath }/ProductServlet.do?method=update" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="pid" value="${ product.pid }">
                     <input type="hidden" name="filename" value="${ product.filename }">
                     <input type="hidden" name="path" value="${ product.path }">
@@ -100,9 +100,9 @@
                             <div class="col-md-6">
                                 <label for="sn" class="field select">
                                     <select name="cid" class="gui-input" placeholder="分类...">
-                                    
+
                                     <c:forEach var="c" items="${ categoryList }">
-                                    	<option value="${ c.cid }" <c:if test="${ c.cid == product.category.cid }">selected</c:if>>${ c.cname }</option>
+                                    	<option value="${ c.cid }" <c:if test="${c.cid == product.category.cid}">selected</c:if>>${ c.cname }</option>
                                     </c:forEach>
                                     </select>
                                     <i class="arrow double"></i>

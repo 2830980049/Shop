@@ -34,5 +34,20 @@
     <url-pattern>*.do</url-pattern>
   </filter-mapping>
 
+  <filter>
+    <filter-name>Privilege</filter-name>
+    <filter-class>com.edu.Filter.Privilege</filter-class>
+  </filter>
+
+  <!-- 权限过滤-->
+  <filter-mapping>
+    <filter-name>Privilege</filter-name>
+    <url-pattern>*.jsp</url-pattern>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>Privilege</filter-name>
+    <url-pattern>*.do</url-pattern>
+  </filter-mapping>
 
 </web-app>

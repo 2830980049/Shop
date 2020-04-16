@@ -8,6 +8,7 @@ import jdk.nashorn.internal.scripts.JD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -126,6 +127,31 @@ public class CategoryDaoImpl implements CategoryDao {
         }
         finally {
             JDBC_untils.relese(pres,con);
+        }
+    }
+
+    @Override
+    public void delete_data(Connection con, Integer cid) {
+        PreparedStatement pres = null;
+        try {
+            String sql = "delete from category where cid = ?";
+            con = JDBC_untils.getConnection();
+            pres = con.prepareStatement(sql);
+            pres.setInt(1,cid);
+            pres.executeUpdate();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        finally {
+            if (pres != null){
+                try {
+                    pres.close();
+                }
+                catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
         }
     }
 }

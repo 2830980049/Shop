@@ -36,6 +36,7 @@ public class UserServlet extends HttpServlet {
     private void logout(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         // 将Sessio销毁
         req.getSession().invalidate();
+        System.out.println(req.getSession().getAttribute("user"));
         // 跳转页面
         resp.sendRedirect(req.getContextPath()+"/login.jsp");
     }
